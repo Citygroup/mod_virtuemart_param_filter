@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Param Filter: Virtuemart 2 search module
+Version: 1.2.2 (2012.05.23)
+Author: Usov Dima
+Copyright: Copyright (C) 2012 usovdm
+License GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+http://myext.eu
+-->
+<install version="2.5" type="module" method="upgrade">
+    <name>Search (filter) module for Virtuemart 2 multiple customfield plugin</name>
+    <creationDate>2012.05.23</creationDate>
+    <author>Usov Dima</author>
+    <authorUrl>http://myext.ru</authorUrl>
+    <authorEmail>usovdm@gmail.com</authorEmail>
+    <copyright>Copyright (C) 2012 usovdm</copyright>
+    <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPLv3</license>
+    <version>1.2.2</version>
+    <description>MOD_VMCUSTOM_PARAM_FILTER_XML_DESC</description>
+    <files>
+        <filename module="mod_virtuemart_param_filter">mod_virtuemart_param_filter.php</filename>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>
+        <folder>assets</folder>
+        <folder>tmpl</folder>
+    </files>
+	
+	<languages folder="language">
+		<language tag="ru-RU">ru-RU/ru-RU.mod_virtuemart_param_filter.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.mod_virtuemart_param_filter.sys.ini</language>
+		<language tag="en-GB">en-GB/en-GB.mod_virtuemart_param_filter.ini</language>
+		<language tag="en-GB">en-GB/en-GB.mod_virtuemart_param_filter.sys.ini</language>
+	</languages>
+
+    <config>
+        <fields name = "params">
+		 <fieldset name="basic" addfieldpath="/administrator/components/com_virtuemart/elements">
+			<field	name="layout" type="filelist" label="MOD_VMCUSTOM_PARAM_FILTER_XML_LAYOUT_TITLE"
+             	description="MOD_VMCUSTOM_PARAM_FILTER_XML_LAYOUT_DESC"
+             	directory="/modules/mod_virtuemart_param_filter/tmpl/"
+             	default="default" hide_default="1" hide_none="1"
+             	stripext="1" filter="\.php$" exclude="^_">
+			</field>
+			<field name="castom_fields_filter" type="text" default="" label="MOD_VMCUSTOM_PARAM_CUSTOM_FIELD_FILTER" description="MOD_VMCUSTOM_PARAM_CUSTOM_FIELD_FILTER_DESC"/>
+			<field name="method" type="radio" default="get" label="MOD_VMCUSTOM_PARAM_FILTER_XML_METHOD_TITLE" description="MOD_VMCUSTOM_PARAM_FILTER_XML_METHOD_DESC">
+				<option value="get">GET</option>
+				<option value="post">POST</option>
+			</field>
+			<field name="limit" type="text" default="10" label="MOD_VMCUSTOM_PARAM_FILTER_XML_LIMIT_TITLE" description="MOD_VMCUSTOM_PARAM_FILTER_XML_LIMIT_DESC" />
+			<field name="stock" type="radio" default="0" label="MOD_VMCUSTOM_PARAM_FILTER_XML_STOCK_TITLE" description="MOD_VMCUSTOM_PARAM_FILTER_XML_STOCK_DESC">
+				<option value="0">No</option>
+				<option value="1">Yes</option>
+			</field>
+			<field name="Parent_Category_id" type="text" default="" label="MOD_VMCUSTOM_PARAM_FILTER_XML_PARENT_AUTO_TITLE" description="MOD_VMCUSTOM_PARAM_FILTER_XML_PARENT_AUTO_DESC" />
+			<field name="parent_auto" type="radio" default="0" label="MOD_VMCUSTOM_PARAM_FILTER_XML_PARENT_CATEGORY_ID_TITLE" description="MOD_VMCUSTOM_PARAM_FILTER_XML_PARENT_CATEGORY_ID_DESC">
+				<option value="0">No</option>
+				<option value="1">Yes</option>
+			</field>
+			<field name="categories_show" type="radio" default="1" label="MOD_VMCUSTOM_PARAM_FILTER_XML_CATEGORIES_SHOW_TITLE" description="MOD_VMCUSTOM_PARAM_FILTER_XML_CATEGORIES_SHOW_DESC">
+				<option value="0">No</option>
+				<option value="1">Yes</option>
+			</field>
+			<field name="categories_layout" type="list" default="checkbox" label="MOD_VMCUSTOM_PARAM_FILTER_XML_CATEGORIES_LAYOUT_TITLE" description="MOD_VMCUSTOM_PARAM_FILTER_XML_CATEGORIES_LAYOUT_DESC">
+				<option value="checkbox">checkbox</option>
+				<option value="select">select</option>
+				<option value="select-chosen">select (chosen)</option>
+				<option value="multiselect">select multiple</option>
+				<option value="multiselect-chosen">select multiple (chosen)</option>
+			</field>
+			<field name="manufacturers_show" type="radio" default="1" label="MOD_VMCUSTOM_PARAM_FILTER_XML_MANUFACTURERS_SHOW_TITLE" description="MOD_VMCUSTOM_PARAM_FILTER_XML_MANUFACTURERS_SHOW_DESC">
+				<option value="0">No</option>
+				<option value="1">Yes</option>
+			</field>
+			<field	name="manufacturers_layout" type="filelist" label="MOD_VMCUSTOM_PARAM_FILTER_XML_MANUFACTURERS_LAYOUT_TITLE"
+             	description="MOD_VMCUSTOM_PARAM_FILTER_XML_MANUFACTURERS_LAYOUT_DESC"
+             	directory="/modules/mod_virtuemart_param_filter/tmpl/manufacturers"
+             	default="auto" hide_default="1" hide_none="1"
+             	stripext="1" filter="\.php$" exclude="^_" />
+			<field name="price_show" type="radio" default="1" label="MOD_VMCUSTOM_PARAM_FILTER_XML_PRICE_SHOW_TITLE" description="MOD_VMCUSTOM_PARAM_FILTER_XML_PRICE_SHOW_DESC">
+				<option value="0">No</option>
+				<option value="1">Yes</option>
+			</field>
+			<field name="price_discount" type="radio" default="0" label="MOD_VMCUSTOM_PARAM_FILTER_XML_PRICE_DISCOUNT_TITLE" description="MOD_VMCUSTOM_PARAM_FILTER_XML_PRICE_DISCOUNT_DESC">
+				<option value="0">No</option>
+				<option value="1">Yes</option>
+			</field>
+			<field	name="price_layout" type="filelist" label="MOD_VMCUSTOM_PARAM_FILTER_XML_PRICE_LAYOUT_TITLE"
+             	description="MOD_VMCUSTOM_PARAM_FILTER_XML_PRICE_LAYOUT_DESC"
+             	directory="/modules/mod_virtuemart_param_filter/tmpl/price"
+             	default="auto" hide_default="1" hide_none="1"
+             	stripext="1" filter="\.php$" exclude="^_" />
+			<field name="customfields_show" type="radio" default="1" label="MOD_VMCUSTOM_PARAM_FILTER_XML_CUSTOMFIELDS_SHOW_TITLE" description="MOD_VMCUSTOM_PARAM_FILTER_XML_CUSTOMFIELDS_SHOW_DESC">
+				<option value="0">No</option>
+				<option value="1">Yes</option>
+			</field>
+			<field	name="customfields_layout" type="filelist" label="MOD_VMCUSTOM_PARAM_FILTER_XML_CUSTOMFIELDS_LAYOUT_TITLE"
+             	description="MOD_VMCUSTOM_PARAM_FILTER_XML_CUSTOMFIELDS_LAYOUT_DESC"
+             	directory="/modules/mod_virtuemart_param_filter/tmpl/customfields"
+             	default="auto" hide_default="1" hide_none="1"
+             	stripext="1" filter="\.php$" exclude="^_" />
+			<field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
+			<field name="class_sfx" type="text" default="" label="Menu Class Suffix" description="A suffix to be applied to the css class of the menu items" />
+            </fieldset>
+        </fields>
+    </config>
+	<updateservers>
+		<server type="extension" priority="1" name="mod_virtuemart_param_filter">http://myext.ru/updates/mod_virtuemart_param_filter.xml</server>
+	</updateservers>
+</install>
